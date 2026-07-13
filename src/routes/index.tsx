@@ -21,6 +21,12 @@ import {
   Home as HomeIcon,
   LifeBuoy,
   Send,
+  Handshake,
+  Pill,
+  Stethoscope,
+  Store,
+  ShoppingBag,
+  BadgePercent,
 } from "lucide-react";
 
 import logoAsset from "@/assets/logo-sjb-transparent.png";
@@ -93,6 +99,15 @@ const NAV = [
   { href: "#parceiros", label: "Parceiros" },
   { href: "#contato", label: "Contato" },
 ];
+
+const PARTNER_CATEGORIES = [
+  { icon: Pill, name: "Farmácias", benefit: "medicamentos e cuidados" },
+  { icon: Stethoscope, name: "Clínicas", benefit: "atendimento parceiro" },
+  { icon: Store, name: "Comércio local", benefit: "vantagens no dia a dia" },
+  { icon: ShoppingBag, name: "Mercadinhos", benefit: "economia para a família" },
+  { icon: BadgePercent, name: "Descontos", benefit: "condições especiais" },
+  { icon: Handshake, name: "Rede parceira", benefit: "empresas conveniadas" },
+] as const;
 
 function Header() {
   const [open, setOpen] = useState(false);
@@ -949,13 +964,17 @@ function Footer() {
               Benefícios e vantagens para associados da Assistência Familiar São João Batista.
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-            {["Descontos locais", "Rede parceira", "Vantagens para associados"].map((item) => (
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+            {PARTNER_CATEGORIES.map(({ icon: Icon, name, benefit }) => (
               <div
-                key={item}
-                className="rounded-2xl border border-border bg-brand-soft px-5 py-6 text-center text-sm font-semibold text-brand-dark"
+                key={name}
+                className="group flex min-h-[132px] flex-col items-center justify-center rounded-2xl border border-border bg-white px-3 py-4 text-center shadow-sm ring-1 ring-brand-soft/70 transition duration-200 hover:-translate-y-0.5 hover:border-brand/30 hover:shadow-md"
               >
-                {item}
+                <span className="grid h-12 w-12 place-items-center rounded-full bg-brand-soft text-brand-dark transition-colors group-hover:bg-brand group-hover:text-white">
+                  <Icon className="h-6 w-6" />
+                </span>
+                <strong className="mt-3 text-sm font-bold text-brand-dark">{name}</strong>
+                <span className="mt-1 text-xs leading-snug text-muted-foreground">{benefit}</span>
               </div>
             ))}
           </div>
