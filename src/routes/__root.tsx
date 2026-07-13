@@ -77,21 +77,36 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Assistência Familiar São João Batista | Planos de Proteção Familiar" },
+      {
+        name: "description",
+        content:
+          "Conheça os planos da Assistência Familiar São João Batista, com assistência, benefícios e opções de cobertura para sua família em São Gonçalo do Amarante – CE.",
+      },
+      { name: "author", content: "Assistência Familiar São João Batista" },
+      {
+        name: "keywords",
+        content:
+          "assistência familiar, plano familiar, assistência funeral, plano funeral, São Gonçalo do Amarante, Croatão, proteção familiar, clube de descontos",
+      },
+      { property: "og:title", content: "Assistência Familiar São João Batista" },
+      {
+        property: "og:description",
+        content:
+          "Planos de assistência familiar criados para proporcionar proteção, segurança e tranquilidade para você e quem você ama.",
+      },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Assistência Familiar São João Batista" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Assistência Familiar São João Batista" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
   shellComponent: RootShell,
