@@ -23,9 +23,8 @@ import {
   Send,
 } from "lucide-react";
 
-import logoAsset from "@/assets/logo-sjb.png.asset.json";
-import coupleAsset from "@/assets/couple-sjb.png.asset.json";
-import partnersAsset from "@/assets/partners-sjb.jpg.asset.json";
+import logoAsset from "@/assets/logo-sjb-transparent.png";
+import coupleAsset from "@/assets/couple-sjb-local.png";
 
 const WHATSAPP_BASE = "https://wa.me/5585991141979";
 const wa = (msg: string) => `${WHATSAPP_BASE}?text=${encodeURIComponent(msg)}`;
@@ -33,8 +32,8 @@ const wa = (msg: string) => `${WHATSAPP_BASE}?text=${encodeURIComponent(msg)}`;
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { property: "og:image", content: coupleAsset.url },
-      { name: "twitter:image", content: coupleAsset.url },
+      { property: "og:image", content: coupleAsset },
+      { name: "twitter:image", content: coupleAsset },
     ],
     scripts: [
       {
@@ -43,11 +42,12 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           name: "Assistência Familiar São João Batista",
-          image: coupleAsset.url,
+          image: coupleAsset,
           telephone: "+55 85 99114-1979",
           address: {
             "@type": "PostalAddress",
-            streetAddress: "Rua Vereador José Evaldo, 321, loja 01, Praça da Matriz, Distrito de Croatão",
+            streetAddress:
+              "Rua Vereador José Evaldo, 321, loja 01, Praça da Matriz, Distrito de Croatão",
             addressLocality: "São Gonçalo do Amarante",
             addressRegion: "CE",
             addressCountry: "BR",
@@ -66,8 +66,8 @@ function LandingPage() {
       <Header />
       <main>
         <Hero />
-        <Sobre />
         <Planos />
+        <Sobre />
         <Dependentes />
         <Servicos />
         <Saloes />
@@ -85,8 +85,9 @@ function LandingPage() {
 
 const NAV = [
   { href: "#inicio", label: "Início" },
-  { href: "#sobre", label: "Sobre" },
   { href: "#planos", label: "Planos" },
+  { href: "#saloes", label: "Salões" },
+  { href: "#sobre", label: "Sobre" },
   { href: "#beneficios", label: "Benefícios" },
   { href: "#servicos", label: "Serviços" },
   { href: "#parceiros", label: "Parceiros" },
@@ -115,7 +116,7 @@ function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <a href="#inicio" className="flex shrink-0 items-center gap-2">
           <img
-            src={logoAsset.url}
+            src={logoAsset}
             alt="Assistência Familiar São João Batista"
             className="h-12 w-auto sm:h-14"
           />
@@ -135,7 +136,9 @@ function Header() {
 
         <div className="flex items-center gap-2">
           <a
-            href={wa("Olá! Conheci a Assistência Familiar São João Batista pelo site e gostaria de conhecer melhor os planos.")}
+            href={wa(
+              "Olá! Conheci a Assistência Familiar São João Batista pelo site e gostaria de conhecer melhor os planos.",
+            )}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden items-center gap-2 rounded-full bg-cta px-4 py-2.5 text-sm font-semibold text-white shadow-[var(--shadow-cta)] transition-transform hover:scale-[1.02] sm:inline-flex"
@@ -167,7 +170,9 @@ function Header() {
               </a>
             ))}
             <a
-              href={wa("Olá! Conheci a Assistência Familiar São João Batista pelo site e gostaria de conhecer melhor os planos.")}
+              href={wa(
+                "Olá! Conheci a Assistência Familiar São João Batista pelo site e gostaria de conhecer melhor os planos.",
+              )}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setOpen(false)}
@@ -199,11 +204,11 @@ function Hero() {
         <div className="animate-fade-up">
           <span className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-white/70 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-dark">
             <Shield className="h-3.5 w-3.5" />
-            Assistência Familiar
+            Planos em destaque
           </span>
           <h1 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight text-brand-dark sm:text-5xl lg:text-6xl">
-            Cuidado, acolhimento e{" "}
-            <span className="text-brand-gradient">respeito</span> em todos os momentos.
+            Cuidado, acolhimento e <span className="text-brand-gradient">respeito</span> em todos os
+            momentos.
           </h1>
           <p className="mt-5 max-w-xl text-base text-muted-foreground sm:text-lg">
             Planos de assistência familiar criados para proporcionar proteção, segurança e
@@ -223,7 +228,9 @@ function Hero() {
               Conhecer os planos
             </a>
             <a
-              href={wa("Olá! Gostaria de conhecer os planos da Assistência Familiar São João Batista.")}
+              href={wa(
+                "Olá! Gostaria de conhecer os planos da Assistência Familiar São João Batista.",
+              )}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-full border border-brand-dark/15 bg-white px-6 py-3.5 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-soft"
@@ -234,27 +241,35 @@ function Hero() {
           </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-brand-dark/75">
-            <span className="inline-flex items-center gap-2"><Heart className="h-4 w-4 text-brand" /> Atendimento humano</span>
-            <span className="inline-flex items-center gap-2"><Shield className="h-4 w-4 text-brand" /> Proteção familiar</span>
-            <span className="inline-flex items-center gap-2"><Users className="h-4 w-4 text-brand" /> Cobertura para dependentes</span>
+            <span className="inline-flex items-center gap-2">
+              <Heart className="h-4 w-4 text-brand" /> Atendimento humano
+            </span>
+            <span className="inline-flex items-center gap-2">
+              <Shield className="h-4 w-4 text-brand" /> Proteção familiar
+            </span>
+            <span className="inline-flex items-center gap-2">
+              <Users className="h-4 w-4 text-brand" /> Cobertura para dependentes
+            </span>
+            <span className="inline-flex items-center gap-2">
+              <HomeIcon className="h-4 w-4 text-brand" /> 2 salões próprios
+            </span>
           </div>
         </div>
 
         {/* Couple visual */}
         <div className="relative animate-fade-up" style={{ animationDelay: "150ms" }}>
           <div className="relative mx-auto max-w-md lg:max-w-none">
-            <div className="absolute inset-0 -z-10 translate-y-6 rounded-[2.5rem] bg-brand-light/50 blur-2xl" />
-            <div className="relative overflow-hidden rounded-[2rem] border border-white/60 bg-gradient-to-b from-white to-brand-soft shadow-[var(--shadow-card)]">
-              <img
-                src={coupleAsset.url}
-                alt="Consultores da Assistência Familiar São João Batista"
-                className="mx-auto block h-auto w-full object-contain"
-              />
-            </div>
+            <img
+              src={coupleAsset}
+              alt="Consultores da Assistência Familiar São João Batista"
+              className="mx-auto block h-auto w-full object-contain drop-shadow-[0_24px_35px_rgba(14,44,102,0.18)]"
+            />
 
             {/* Floating price badge */}
             <div className="absolute -bottom-4 right-4 rotate-[-6deg] rounded-2xl bg-cta px-5 py-3 text-center text-white shadow-[var(--shadow-cta)] animate-floaty sm:-bottom-6 sm:right-8">
-              <div className="text-[10px] font-semibold uppercase tracking-widest opacity-90">Planos a partir de</div>
+              <div className="text-[10px] font-semibold uppercase tracking-widest opacity-90">
+                Planos a partir de
+              </div>
               <div className="text-2xl font-extrabold">R$ 39,90</div>
             </div>
           </div>
@@ -272,13 +287,12 @@ function Sobre() {
       <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-4 sm:px-6 lg:grid-cols-5 lg:px-8">
         <div className="lg:col-span-3">
           <h2 className="text-3xl font-bold leading-tight text-brand-dark sm:text-4xl">
-            Cuidamos de quem mais importa:{" "}
-            <span className="text-brand-gradient">sua família.</span>
+            Cuidamos de quem mais importa: <span className="text-brand-gradient">sua família.</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            A Assistência Familiar São João Batista oferece planos pensados para proporcionar
-            apoio, organização e tranquilidade para as famílias. Nosso compromisso é estar
-            presente com acolhimento, respeito e atenção em todos os momentos.
+            A Assistência Familiar São João Batista oferece planos pensados para proporcionar apoio,
+            organização e tranquilidade para as famílias. Nosso compromisso é estar presente com
+            acolhimento, respeito e atenção em todos os momentos.
           </p>
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
             {[
@@ -298,10 +312,11 @@ function Sobre() {
         </div>
         <div className="lg:col-span-2">
           <div className="relative">
-            <div className="absolute inset-0 -z-10 rounded-[2rem] bg-brand-light/40 blur-2xl" />
-            <div className="overflow-hidden rounded-[2rem] border border-border bg-brand-soft">
-              <img src={coupleAsset.url} alt="Equipe São João Batista" className="h-full w-full object-cover" />
-            </div>
+            <img
+              src={coupleAsset}
+              alt="Equipe São João Batista"
+              className="mx-auto block h-auto max-h-[520px] w-full object-contain drop-shadow-[0_20px_28px_rgba(14,44,102,0.16)]"
+            />
           </div>
         </div>
       </div>
@@ -368,8 +383,12 @@ function Planos() {
   return (
     <section id="planos" className="relative bg-brand-soft/60 py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold text-brand-dark sm:text-4xl">
+        <div className="mx-auto max-w-3xl text-center">
+          <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-bold uppercase tracking-widest text-brand-dark shadow-sm">
+            <Sparkles className="h-4 w-4 text-brand" />
+            Planos em evidência
+          </span>
+          <h2 className="mt-4 text-3xl font-bold text-brand-dark sm:text-4xl">
             Escolha o plano ideal para sua família
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
@@ -378,6 +397,13 @@ function Planos() {
           <div className="mt-5 inline-flex items-baseline gap-2 rounded-full border border-brand/15 bg-white px-4 py-2 shadow-sm">
             <span className="text-sm text-brand-dark/70">Planos a partir de</span>
             <span className="text-xl font-extrabold text-brand-dark">R$ 39,90</span>
+          </div>
+          <div className="mt-5 inline-flex flex-wrap items-center justify-center gap-3 rounded-2xl border border-brand/15 bg-white px-5 py-3 text-sm font-semibold text-brand-dark shadow-sm">
+            <span className="inline-flex items-center gap-2">
+              <HomeIcon className="h-4 w-4 text-brand" />2 salões de velório próprios
+            </span>
+            <span className="hidden h-4 w-px bg-border sm:block" />
+            <span>Estrutura própria para acolher sua família com mais tranquilidade.</span>
           </div>
         </div>
 
@@ -535,14 +561,18 @@ function Servicos() {
 
 function Saloes() {
   return (
-    <section className="py-20 sm:py-24">
+    <section id="saloes" className="py-20 sm:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold text-brand-dark sm:text-4xl">
-            Disponibilizamos dois salões para velórios
+          <span className="inline-flex items-center gap-2 rounded-full bg-brand-soft px-4 py-2 text-xs font-bold uppercase tracking-widest text-brand-dark">
+            <HomeIcon className="h-4 w-4 text-brand" />
+            Estrutura própria
+          </span>
+          <h2 className="mt-4 text-3xl font-bold text-brand-dark sm:text-4xl">
+            2 salões de velório próprios
           </h2>
           <p className="mt-3 text-muted-foreground">
-            Espaços preparados com respeito e cuidado para acolher famílias e amigos.
+            Espaços próprios preparados com respeito e cuidado para acolher famílias e amigos.
           </p>
         </div>
 
@@ -663,7 +693,9 @@ function CTABanner() {
           </p>
         </div>
         <a
-          href={wa("Olá! Gostaria de conversar com um consultor da Assistência Familiar São João Batista.")}
+          href={wa(
+            "Olá! Gostaria de conversar com um consultor da Assistência Familiar São João Batista.",
+          )}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 text-base font-semibold text-brand-dark shadow-lg transition-transform hover:scale-[1.03]"
@@ -721,7 +753,9 @@ function Contato() {
               icon={Phone}
               title="Telefone e WhatsApp"
               value="(85) 99114-1979"
-              href={wa("Olá! Gostaria de mais informações sobre a Assistência Familiar São João Batista.")}
+              href={wa(
+                "Olá! Gostaria de mais informações sobre a Assistência Familiar São João Batista.",
+              )}
               external
             />
             <ContactCard
@@ -907,7 +941,6 @@ function ContactCard({
 function Footer() {
   return (
     <footer id="parceiros" className="mt-8">
-      {/* Partners strip — TODO: substituir pela imagem original por logos individuais em alta resolução das empresas parceiras */}
       <div className="bg-white py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="mb-6 text-center">
@@ -916,12 +949,15 @@ function Footer() {
               Benefícios e vantagens para associados da Assistência Familiar São João Batista.
             </p>
           </div>
-          <div className="overflow-hidden rounded-2xl border border-border">
-            <img
-              src={partnersAsset.url}
-              alt="Empresas parceiras da Assistência Familiar São João Batista"
-              className="block h-auto w-full"
-            />
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+            {["Descontos locais", "Rede parceira", "Vantagens para associados"].map((item) => (
+              <div
+                key={item}
+                className="rounded-2xl border border-border bg-brand-soft px-5 py-6 text-center text-sm font-semibold text-brand-dark"
+              >
+                {item}
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -930,16 +966,20 @@ function Footer() {
       <div className="bg-brand-dark text-white/90">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-4 py-14 sm:px-6 md:grid-cols-4 lg:px-8">
           <div className="md:col-span-2">
-            <div className="inline-block rounded-2xl bg-white p-4">
-              <img src={logoAsset.url} alt="São João Batista" className="h-16 w-auto" />
-            </div>
+            <img
+              src={logoAsset}
+              alt="São João Batista"
+              className="h-24 w-auto max-w-full object-contain drop-shadow-[0_8px_18px_rgba(0,0,0,0.25)]"
+            />
             <p className="mt-5 max-w-md text-white/85">
               Cuidado, acolhimento e respeito em todos os momentos.
             </p>
           </div>
 
           <div>
-            <h4 className="text-sm font-bold uppercase tracking-widest text-white">Links rápidos</h4>
+            <h4 className="text-sm font-bold uppercase tracking-widest text-white">
+              Links rápidos
+            </h4>
             <ul className="mt-4 space-y-2 text-sm">
               {NAV.map((n) => (
                 <li key={n.href}>
@@ -956,15 +996,20 @@ function Footer() {
             <ul className="mt-4 space-y-3 text-sm text-white/85">
               <li className="flex items-start gap-2">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0" />
-                <a href={wa("Olá!")} target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                <a
+                  href={wa("Olá!")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white"
+                >
                   (85) 99114-1979
                 </a>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
                 <span>
-                  Rua Vereador José Evaldo, 321, loja 01, Praça da Matriz, Distrito de Croatão,
-                  São Gonçalo do Amarante – CE.
+                  Rua Vereador José Evaldo, 321, loja 01, Praça da Matriz, Distrito de Croatão, São
+                  Gonçalo do Amarante – CE.
                 </span>
               </li>
               <li className="flex items-start gap-2">
@@ -984,7 +1029,8 @@ function Footer() {
 
         <div className="border-t border-white/10">
           <div className="mx-auto max-w-6xl px-4 py-5 text-center text-xs text-white/70 sm:px-6 lg:px-8">
-            © {new Date().getFullYear()} Assistência Familiar São João Batista. Todos os direitos reservados.
+            © {new Date().getFullYear()} Assistência Familiar São João Batista. Todos os direitos
+            reservados.
           </div>
         </div>
       </div>
@@ -997,7 +1043,9 @@ function Footer() {
 function FloatingWhatsApp() {
   return (
     <a
-      href={wa("Olá! Vim pelo site da Assistência Familiar São João Batista e gostaria de falar com um consultor.")}
+      href={wa(
+        "Olá! Vim pelo site da Assistência Familiar São João Batista e gostaria de falar com um consultor.",
+      )}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Fale conosco pelo WhatsApp"
