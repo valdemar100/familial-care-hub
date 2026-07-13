@@ -943,14 +943,14 @@ function Footer() {
   return (
     <footer id="parceiros" className="mt-8">
       <div className="bg-white py-10">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[1300px] px-4 sm:px-6 lg:px-8">
           <div className="mb-6 text-center">
             <h3 className="text-2xl font-bold text-brand-dark">Empresas parceiras</h3>
             <p className="mt-2 text-sm text-muted-foreground">
               Benefícios e vantagens para associados da Assistência Familiar São João Batista.
             </p>
           </div>
-          <div className="mx-auto w-full max-w-[1090px] overflow-hidden rounded-[24px]">
+          <div className="mx-auto w-full max-w-[1235px] overflow-hidden rounded-[24px]">
             <img
               src={partnersAsset}
               alt="Empresas parceiras: FarmaTotal Popular, Antonio Lucas, Estética por Yanny Souza, Ópticas Paris, Clínica Dra. Jéssica Freire, LCE Óptica, Clínica Mais Saúde e CV Nutri Suplementos"
