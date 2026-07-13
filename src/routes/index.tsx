@@ -950,7 +950,7 @@ function Footer() {
               Benefícios e vantagens para associados da Assistência Familiar São João Batista.
             </p>
           </div>
-          <div className="overflow-hidden rounded-[24px]">
+          <div className="mx-auto w-full max-w-[1090px] overflow-hidden rounded-[24px]">
             <img
               src={partnersAsset}
               alt="Empresas parceiras: FarmaTotal Popular, Antonio Lucas, Estética por Yanny Souza, Ópticas Paris, Clínica Dra. Jéssica Freire, LCE Óptica, Clínica Mais Saúde e CV Nutri Suplementos"
