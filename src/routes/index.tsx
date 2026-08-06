@@ -48,7 +48,7 @@ export const Route = createFileRoute("/")({
           address: {
             "@type": "PostalAddress",
             streetAddress:
-              "Rua Vereador José Evaldo, 321, loja 01, Praça da Matriz, Distrito de Croatão",
+              "Rua Vereador José Evaldo, 321, loja 01, Praça da Matriz, Distrito de Croatá",
             addressLocality: "São Gonçalo do Amarante",
             addressRegion: "CE",
             addressCountry: "BR",
@@ -119,7 +119,7 @@ function Header() {
           <img
             src={logoAsset}
             alt="Assistência Familiar São João Batista"
-            className="h-12 w-auto sm:h-14"
+            className="h-16 w-auto sm:h-20 lg:h-24"
           />
         </a>
 
@@ -193,7 +193,7 @@ function Header() {
 
 function Hero() {
   return (
-    <section id="inicio" className="bg-hero relative overflow-hidden pt-28 pb-16 sm:pt-32 sm:pb-24">
+    <section id="inicio" className="bg-hero relative overflow-hidden pt-36 pb-16 sm:pt-40 sm:pb-24">
       {/* Decorative blobs */}
       <div className="pointer-events-none absolute -left-24 top-24 h-72 w-72 rounded-full bg-brand-light/50 blur-3xl animate-floaty" />
       <div
@@ -735,7 +735,7 @@ function Contato() {
   };
 
   const address =
-    "Rua Vereador José Evaldo, 321, loja 01, Praça da Matriz, Distrito de Croatão, São Gonçalo do Amarante - CE";
+    "Rua Vereador José Evaldo, 321, loja 01, Praça da Matriz, Distrito de Croatá, São Gonçalo do Amarante - CE";
 
   return (
     <section id="contato" className="py-20 sm:py-24">
@@ -775,16 +775,15 @@ function Contato() {
               external
             />
             <div className="overflow-hidden rounded-2xl border border-border">
-              {/* Note: mapa aproximado a partir do endereço; ajuste caso a localização exata seja outra. */}
               <iframe
-                title="Mapa aproximado — Distrito de Croatão, São Gonçalo do Amarante - CE"
+                title="Mapa — Distrito de Croatá, São Gonçalo do Amarante - CE"
                 src={`https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 className="h-64 w-full border-0"
               />
               <div className="border-t border-border bg-brand-soft/60 px-4 py-2 text-xs text-muted-foreground">
-                Localização aproximada com base no endereço. Confirme com nossos consultores.
+                Localização da Assistência Familiar São João Batista em Croatá.
               </div>
             </div>
           </div>
@@ -1006,7 +1005,7 @@ function Footer() {
               <li className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
                 <span>
-                  Rua Vereador José Evaldo, 321, loja 01, Praça da Matriz, Distrito de Croatão, São
+                  Rua Vereador José Evaldo, 321, loja 01, Praça da Matriz, Distrito de Croatá, São
                   Gonçalo do Amarante – CE.
                 </span>
               </li>
@@ -1040,19 +1039,29 @@ function Footer() {
 
 function FloatingWhatsApp() {
   return (
-    <a
-      href={wa(
-        "Olá! Vim pelo site da Assistência Familiar São João Batista e gostaria de falar com um consultor.",
-      )}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Fale conosco pelo WhatsApp"
-      className="group fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 rounded-full bg-[oklch(0.66_0.16_150)] px-4 py-3 text-sm font-semibold text-white shadow-xl animate-pulse-ring hover:bg-[oklch(0.6_0.16_150)]"
-    >
-      <MessageCircle className="h-5 w-5" />
-      <span className="hidden max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-all duration-300 group-hover:max-w-[160px] group-hover:opacity-100 sm:inline-block">
-        Fale conosco
-      </span>
-    </a>
+    <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3">
+      <a
+        href="https://www.instagram.com/assis.sjb"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram @assis.sjb"
+        className="inline-flex min-h-14 min-w-14 items-center justify-center gap-3 rounded-full bg-brand-dark px-5 py-4 text-base font-bold text-white shadow-xl transition-transform hover:scale-[1.03] sm:w-[184px]"
+      >
+        <Instagram className="h-6 w-6" />
+        <span className="hidden sm:inline">@assis.sjb</span>
+      </a>
+      <a
+        href={wa(
+          "Olá! Vim pelo site da Assistência Familiar São João Batista e gostaria de falar com um consultor.",
+        )}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Fale conosco pelo WhatsApp"
+        className="inline-flex min-h-14 min-w-14 items-center justify-center gap-3 rounded-full bg-[oklch(0.66_0.16_150)] px-5 py-4 text-base font-bold text-white shadow-xl animate-pulse-ring transition-transform hover:scale-[1.03] hover:bg-[oklch(0.6_0.16_150)] sm:w-[184px]"
+      >
+        <MessageCircle className="h-6 w-6" />
+        <span className="hidden sm:inline">Fale conosco</span>
+      </a>
+    </div>
   );
 }

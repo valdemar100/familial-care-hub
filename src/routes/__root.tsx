@@ -83,7 +83,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "keywords",
         content:
-          "assistência familiar, plano familiar, assistência funeral, plano funeral, São Gonçalo do Amarante, Croatão, proteção familiar, clube de descontos",
+          "assistência familiar, plano familiar, assistência funeral, plano funeral, São Gonçalo do Amarante, Croatá, proteção familiar, clube de descontos",
       },
       { property: "og:title", content: "Assistência Familiar São João Batista" },
       {
