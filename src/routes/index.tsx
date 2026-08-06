@@ -1005,11 +1005,11 @@ function Footer() {
                 key={partner.name}
                 className="flex min-h-[244px] flex-col rounded-2xl border border-border bg-white p-4 text-center shadow-sm transition-shadow hover:shadow-md"
               >
-                <div className="grid h-24 place-items-center overflow-hidden rounded-xl bg-brand-dark px-4 py-3">
+                <div className="grid h-36 place-items-center overflow-hidden rounded-xl border border-border bg-white p-3">
                   <img
                     src={partner.logo}
                     alt={`Logo ${partner.name}`}
-                    className="max-h-full w-full object-contain"
+                    className="max-h-full w-full rounded-lg object-contain"
                   />
                 </div>
                 <h4 className="mt-4 text-base font-bold text-brand-dark">{partner.name}</h4>
