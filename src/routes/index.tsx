@@ -25,10 +25,60 @@ import {
 
 import logoAsset from "@/assets/logo-sjb-transparent.png";
 import coupleAsset from "@/assets/couple-sjb-local.png";
-import partnersAsset from "@/assets/partners-sjb-strip.png";
+import antonioLucasLogo from "@/assets/partners/antonio-lucas.png";
+import clinicaJessicaLogo from "@/assets/partners/clinica-jessica.png";
+import cnNutriLogo from "@/assets/partners/cn-nutri.png";
+import lceOpticaLogo from "@/assets/partners/lce-optica.png";
+import opticaParisLogo from "@/assets/partners/optica-paris.png";
+import yurySousaLogo from "@/assets/partners/yury-sousa-estetica.png";
 
 const WHATSAPP_BASE = "https://wa.me/5585991141979";
 const wa = (msg: string) => `${WHATSAPP_BASE}?text=${encodeURIComponent(msg)}`;
+
+const PARTNERS = [
+  {
+    name: "LCE Óptica",
+    logo: lceOpticaLogo,
+    phone: "5585991307272",
+    phoneDisplay: "(85) 99130-7272",
+    instagram: "@lce_optica",
+  },
+  {
+    name: "Óptica Paris",
+    logo: opticaParisLogo,
+    phone: "5585994457476",
+    phoneDisplay: "(85) 99445-7476",
+    instagram: "@oticapariscroata",
+  },
+  {
+    name: "Antonio Lucas",
+    logo: antonioLucasLogo,
+    phone: "5585992044871",
+    phoneDisplay: "(85) 99204-4871",
+    instagram: "@psicologoantoniolucas",
+  },
+  {
+    name: "CN Nutri",
+    logo: cnNutriLogo,
+    phone: "5585991397188",
+    phoneDisplay: "(85) 99139-7188",
+    instagram: "@cnnutri__",
+  },
+  {
+    name: "Yury Sousa Estética",
+    logo: yurySousaLogo,
+    phone: "5585994449204",
+    phoneDisplay: "(85) 99444-9204",
+    instagram: "@yurysousaestetica",
+  },
+  {
+    name: "Clínica Dra. Jéssica",
+    logo: clinicaJessicaLogo,
+    phone: "5585994213028",
+    phoneDisplay: "(85) 99421-3028",
+    instagram: "@clinicadrajessica",
+  },
+] as const;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -949,12 +999,42 @@ function Footer() {
               Benefícios e vantagens para associados da Assistência Familiar São João Batista.
             </p>
           </div>
-          <div className="mx-auto w-full max-w-[1235px] overflow-hidden rounded-[24px]">
-            <img
-              src={partnersAsset}
-              alt="Empresas parceiras: FarmaTotal Popular, Antonio Lucas, Estética por Yanny Souza, Ópticas Paris, Clínica Dra. Jéssica Freire, LCE Óptica, Clínica Mais Saúde e CV Nutri Suplementos"
-              className="block h-auto w-full"
-            />
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {PARTNERS.map((partner) => (
+              <article
+                key={partner.name}
+                className="flex min-h-[244px] flex-col rounded-2xl border border-border bg-white p-4 text-center shadow-sm transition-shadow hover:shadow-md"
+              >
+                <div className="grid h-24 place-items-center overflow-hidden rounded-xl bg-brand-dark px-4 py-3">
+                  <img
+                    src={partner.logo}
+                    alt={`Logo ${partner.name}`}
+                    className="max-h-full w-full object-contain"
+                  />
+                </div>
+                <h4 className="mt-4 text-base font-bold text-brand-dark">{partner.name}</h4>
+                <div className="mt-3 flex flex-col items-center gap-2 text-sm font-medium text-brand-dark/80">
+                  <a
+                    href={`https://wa.me/${partner.phone}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 hover:text-brand"
+                  >
+                    <Phone className="h-4 w-4" />
+                    {partner.phoneDisplay}
+                  </a>
+                  <a
+                    href={`https://www.instagram.com/${partner.instagram.slice(1)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 hover:text-brand"
+                  >
+                    <Instagram className="h-4 w-4" />
+                    {partner.instagram}
+                  </a>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </div>
