@@ -31,6 +31,11 @@ import cnNutriLogo from "@/assets/partners/cn-nutri.png";
 import lceOpticaLogo from "@/assets/partners/lce-optica.png";
 import opticaParisLogo from "@/assets/partners/optica-paris.png";
 import yurySousaLogo from "@/assets/partners/yury-sousa-estetica.png";
+import salaoFoto1 from "@/assets/saloes/salao-foto-1.jpg";
+import salaoFoto2 from "@/assets/saloes/salao-foto-2.jpg";
+import salaoFoto3 from "@/assets/saloes/salao-foto-3.jpg";
+import salaoVideo1 from "@/assets/saloes/salao-video-1.mp4";
+import salaoVideo2 from "@/assets/saloes/salao-video-2.mp4";
 
 const WHATSAPP_BASE = "https://wa.me/5585991141979";
 const wa = (msg: string) => `${WHATSAPP_BASE}?text=${encodeURIComponent(msg)}`;
@@ -77,6 +82,44 @@ const PARTNERS = [
     phone: "5585994213028",
     phoneDisplay: "(85) 99421-3028",
     instagram: "@clinicadrajessica",
+  },
+] as const;
+
+const SALOES = [
+  {
+    title: "Salão 1",
+    media: [
+      {
+        type: "image",
+        src: salaoFoto1,
+        alt: "Foto do Salão 1 da Assistência Familiar São João Batista",
+      },
+      {
+        type: "video",
+        src: salaoVideo1,
+        label: "Vídeo do Salão 1",
+      },
+    ],
+  },
+  {
+    title: "Salão 2",
+    media: [
+      {
+        type: "image",
+        src: salaoFoto2,
+        alt: "Foto do Salão 2 da Assistência Familiar São João Batista",
+      },
+      {
+        type: "image",
+        src: salaoFoto3,
+        alt: "Outra foto do Salão 2 da Assistência Familiar São João Batista",
+      },
+      {
+        type: "video",
+        src: salaoVideo2,
+        label: "Vídeo do Salão 2",
+      },
+    ],
   },
 ] as const;
 
@@ -627,37 +670,62 @@ function Saloes() {
           </p>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
-          {[1, 2].map((n) => (
-            /* PLACEHOLDER: substituir por fotografia real do Salão {n} quando disponível */
-            <div
-              key={n}
-              className="group relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-brand-soft to-white p-10 shadow-sm"
+        <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
+          {SALOES.map((salao) => (
+            <article
+              key={salao.title}
+              className="overflow-hidden rounded-3xl border border-border bg-white p-4 shadow-sm"
             >
-              <div className="flex items-center gap-3">
-                <div className="grid h-12 w-12 place-items-center rounded-xl bg-white text-brand-dark shadow-sm">
+              <div className="flex items-center gap-3 px-1 pb-4 pt-1">
+                <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-brand-soft text-brand-dark shadow-sm">
                   <HomeIcon className="h-6 w-6" />
                 </div>
                 <div>
                   <div className="text-xs font-semibold uppercase tracking-widest text-brand/80">
                     Espaço para velório
                   </div>
-                  <div className="text-xl font-bold text-brand-dark">Salão {n}</div>
+                  <div className="text-xl font-bold text-brand-dark">{salao.title}</div>
                 </div>
               </div>
-              <p className="mt-5 text-sm text-muted-foreground">
-                Fotografia, localização e estrutura serão exibidas aqui em breve. Para mais
-                informações sobre o espaço, fale com nossos consultores.
-              </p>
+
+              <div className="grid gap-3">
+                {salao.media.map((item) => (
+                  <div
+                    key={`${salao.title}-${item.src}`}
+                    className={`overflow-hidden rounded-2xl border border-border bg-brand-soft/45 ${
+                      item.type === "image" ? "aspect-[3/4]" : "aspect-video"
+                    }`}
+                  >
+                    {item.type === "image" ? (
+                      <img
+                        src={item.src}
+                        alt={item.alt}
+                        loading="lazy"
+                        className="h-full w-full object-contain"
+                      />
+                    ) : (
+                      <video
+                        src={item.src}
+                        aria-label={item.label}
+                        controls
+                        playsInline
+                        preload="metadata"
+                        className="h-full w-full bg-black object-contain"
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
+
               <a
-                href={wa(`Olá! Gostaria de mais informações sobre o Salão ${n} para velórios.`)}
+                href={wa(`Olá! Gostaria de mais informações sobre o ${salao.title} para velórios.`)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-dark hover:text-brand"
+                className="mt-5 inline-flex items-center gap-2 px-1 text-sm font-semibold text-brand-dark hover:text-brand"
               >
                 Saber mais <MessageCircle className="h-4 w-4" />
               </a>
-            </div>
+            </article>
           ))}
         </div>
       </div>
