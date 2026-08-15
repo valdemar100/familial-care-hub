@@ -21,6 +21,8 @@ import {
   Home as HomeIcon,
   LifeBuoy,
   Send,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
 import logoAsset from "@/assets/logo-sjb-transparent.png";
@@ -36,6 +38,7 @@ import salaoFoto2 from "@/assets/saloes/salao-foto-2.jpg";
 import salaoFoto3 from "@/assets/saloes/salao-foto-3.jpg";
 import salaoVideo1 from "@/assets/saloes/salao-video-1.mp4";
 import salaoVideo2 from "@/assets/saloes/salao-video-2.mp4";
+import salaoVideo3 from "@/assets/saloes/salao-video-3.mp4";
 
 const WHATSAPP_BASE = "https://wa.me/5585991141979";
 const wa = (msg: string) => `${WHATSAPP_BASE}?text=${encodeURIComponent(msg)}`;
@@ -98,6 +101,11 @@ const SALOES = [
         type: "video",
         src: salaoVideo1,
         label: "Vídeo do Salão 1",
+      },
+      {
+        type: "video",
+        src: salaoVideo3,
+        label: "Outro vídeo do Salão 1",
       },
     ],
   },
@@ -688,34 +696,7 @@ function Saloes() {
                 </div>
               </div>
 
-              <div className="grid gap-3">
-                {salao.media.map((item) => (
-                  <div
-                    key={`${salao.title}-${item.src}`}
-                    className={`overflow-hidden rounded-2xl border border-border bg-brand-soft/45 ${
-                      item.type === "image" ? "aspect-[3/4]" : "aspect-video"
-                    }`}
-                  >
-                    {item.type === "image" ? (
-                      <img
-                        src={item.src}
-                        alt={item.alt}
-                        loading="lazy"
-                        className="h-full w-full object-contain"
-                      />
-                    ) : (
-                      <video
-                        src={item.src}
-                        aria-label={item.label}
-                        controls
-                        playsInline
-                        preload="metadata"
-                        className="h-full w-full bg-black object-contain"
-                      />
-                    )}
-                  </div>
-                ))}
-              </div>
+              <SalaoMediaCarousel salao={salao} />
 
               <a
                 href={wa(`Olá! Gostaria de mais informações sobre o ${salao.title} para velórios.`)}
@@ -730,6 +711,81 @@ function Saloes() {
         </div>
       </div>
     </section>
+  );
+}
+
+function SalaoMediaCarousel({ salao }: { salao: (typeof SALOES)[number] }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeMedia = salao.media[activeIndex] ?? salao.media[0];
+  const hasMoreThanOne = salao.media.length > 1;
+
+  const goToMedia = (offset: number) => {
+    setActiveIndex((current) => (current + offset + salao.media.length) % salao.media.length);
+  };
+
+  return (
+    <div className="space-y-3">
+      <div className="relative overflow-hidden rounded-2xl border border-border bg-brand-soft/45">
+        <div className="aspect-[4/5] sm:aspect-[3/4]">
+          {activeMedia.type === "image" ? (
+            <img
+              key={activeMedia.src}
+              src={activeMedia.src}
+              alt={activeMedia.alt}
+              loading="lazy"
+              className="h-full w-full object-contain"
+            />
+          ) : (
+            <video
+              key={activeMedia.src}
+              src={activeMedia.src}
+              aria-label={activeMedia.label}
+              controls
+              playsInline
+              preload="metadata"
+              className="h-full w-full bg-black object-contain"
+            />
+          )}
+        </div>
+
+        {hasMoreThanOne ? (
+          <>
+            <button
+              type="button"
+              aria-label={`Ver mídia anterior de ${salao.title}`}
+              onClick={() => goToMedia(-1)}
+              className="absolute left-3 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-white/95 text-brand-dark shadow-md transition hover:bg-brand-dark hover:text-white"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
+            <button
+              type="button"
+              aria-label={`Ver próxima mídia de ${salao.title}`}
+              onClick={() => goToMedia(1)}
+              className="absolute right-3 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-white/95 text-brand-dark shadow-md transition hover:bg-brand-dark hover:text-white"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
+          </>
+        ) : null}
+      </div>
+
+      {hasMoreThanOne ? (
+        <div className="flex items-center justify-center gap-2">
+          {salao.media.map((item, index) => (
+            <button
+              key={item.src}
+              type="button"
+              aria-label={`Selecionar mídia ${index + 1} de ${salao.media.length} em ${salao.title}`}
+              onClick={() => setActiveIndex(index)}
+              className={`h-2.5 rounded-full transition-all ${
+                index === activeIndex ? "w-8 bg-brand-dark" : "w-2.5 bg-brand-dark/25"
+              }`}
+            />
+          ))}
+        </div>
+      ) : null}
+    </div>
   );
 }
 
