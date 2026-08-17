@@ -93,19 +93,19 @@ const SALOES = [
     title: "Salão 1",
     media: [
       {
-        type: "image",
-        src: salaoFoto1,
-        alt: "Foto do Salão 1 da Assistência Familiar São João Batista",
-      },
-      {
         type: "video",
         src: salaoVideo1,
         label: "Vídeo do Salão 1",
       },
       {
         type: "video",
+        src: salaoVideo2,
+        label: "Segundo vídeo do Salão 1",
+      },
+      {
+        type: "video",
         src: salaoVideo3,
-        label: "Outro vídeo do Salão 1",
+        label: "Terceiro vídeo do Salão 1",
       },
     ],
   },
@@ -114,18 +114,18 @@ const SALOES = [
     media: [
       {
         type: "image",
-        src: salaoFoto2,
+        src: salaoFoto1,
         alt: "Foto do Salão 2 da Assistência Familiar São João Batista",
       },
       {
         type: "image",
-        src: salaoFoto3,
+        src: salaoFoto2,
         alt: "Outra foto do Salão 2 da Assistência Familiar São João Batista",
       },
       {
-        type: "video",
-        src: salaoVideo2,
-        label: "Vídeo do Salão 2",
+        type: "image",
+        src: salaoFoto3,
+        alt: "Terceira foto do Salão 2 da Assistência Familiar São João Batista",
       },
     ],
   },
