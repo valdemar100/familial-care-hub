@@ -709,6 +709,25 @@ function Saloes() {
             </article>
           ))}
         </div>
+
+        <div className="mx-auto mt-8 max-w-3xl rounded-3xl border border-brand-dark/10 bg-brand-soft/70 p-6 text-center shadow-sm sm:p-8">
+          <h3 className="text-2xl font-bold text-brand-dark">
+            Seu momento merece um espaço adequado.
+          </h3>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+            Os salões de velório da Assistência Familiar São João Batista também estão disponíveis
+            para locação ao público em geral, mesmo sem vínculo com nossos planos.
+          </p>
+          <p className="mt-3 font-semibold text-brand-dark">Entre em contato e saiba mais.</p>
+          <a
+            href={wa("Olá! Gostaria de saber mais sobre a locação dos salões de velório.")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-brand-dark px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand"
+          >
+            Falar sobre locação <MessageCircle className="h-4 w-4" />
+          </a>
+        </div>
       </div>
     </section>
   );
