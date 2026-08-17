@@ -712,7 +712,7 @@ function Saloes() {
 
         <div className="mx-auto mt-8 max-w-3xl rounded-3xl border border-brand-dark/10 bg-brand-soft/70 p-6 text-center shadow-sm sm:p-8">
           <h3 className="text-2xl font-bold text-brand-dark">
-            Seu momento merece um espaço adequado.
+            Seu ente querido merece um espaço adequado.
           </h3>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
             Os salões de velório da Assistência Familiar São João Batista também estão disponíveis
