@@ -38,6 +38,14 @@ import salaoFoto1 from "@/assets/saloes/salao-foto-1.jpg";
 import salaoFoto2 from "@/assets/saloes/salao-foto-2.jpg";
 import salaoFoto3 from "@/assets/saloes/salao-foto-3.jpg";
 import salaoFoto4 from "@/assets/saloes/salao-foto-4.jpg";
+import salao2Foto4 from "@/assets/saloes/salao-2-foto-4.jpg";
+import salao2Foto5 from "@/assets/saloes/salao-2-foto-5.jpg";
+import salao2Foto6 from "@/assets/saloes/salao-2-foto-6.jpg";
+import salao2Foto7 from "@/assets/saloes/salao-2-foto-7.jpg";
+import salao2Foto8 from "@/assets/saloes/salao-2-foto-8.jpg";
+import salao2Foto9 from "@/assets/saloes/salao-2-foto-9.jpg";
+import salao2Foto10 from "@/assets/saloes/salao-2-foto-10.jpg";
+import salao2Foto11 from "@/assets/saloes/salao-2-foto-11.jpg";
 import salaoVideo1 from "@/assets/saloes/salao-video-1.mp4";
 import salaoVideo2 from "@/assets/saloes/salao-video-2.mp4";
 import salaoVideo3 from "@/assets/saloes/salao-video-3.mp4";
@@ -145,6 +153,46 @@ const SALOES = [
         type: "image",
         src: salaoFoto3,
         alt: "Terceira foto do Salão 2 da Assistência Familiar São João Batista",
+      },
+      {
+        type: "image",
+        src: salao2Foto4,
+        alt: "Estrutura interna do Salão 2 da Assistência Familiar São João Batista",
+      },
+      {
+        type: "image",
+        src: salao2Foto5,
+        alt: "Detalhe do espaço de velório do Salão 2",
+      },
+      {
+        type: "image",
+        src: salao2Foto6,
+        alt: "Vista do Salão 2 preparado para acolhimento",
+      },
+      {
+        type: "image",
+        src: salao2Foto7,
+        alt: "Ambiente interno do Salão 2",
+      },
+      {
+        type: "image",
+        src: salao2Foto8,
+        alt: "Decoração e estrutura do Salão 2",
+      },
+      {
+        type: "image",
+        src: salao2Foto9,
+        alt: "Espaço do Salão 2 com cadeiras e estrutura de apoio",
+      },
+      {
+        type: "image",
+        src: salao2Foto10,
+        alt: "Área interna do Salão 2 para velórios",
+      },
+      {
+        type: "image",
+        src: salao2Foto11,
+        alt: "Detalhe da estrutura do Salão 2",
       },
     ],
   },
@@ -1297,7 +1345,7 @@ function Footer() {
             <img
               src={logoAsset}
               alt="São João Batista"
-              className="h-24 w-auto max-w-full object-contain drop-shadow-[0_8px_18px_rgba(0,0,0,0.25)]"
+              className="h-24 w-auto max-w-full object-contain opacity-95 brightness-0 invert drop-shadow-[0_8px_18px_rgba(0,0,0,0.25)]"
             />
             <p className="mt-5 max-w-md text-white/85">
               Cuidado, acolhimento e respeito em todos os momentos.
