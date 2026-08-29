@@ -397,6 +397,11 @@ function Hero() {
 
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-8 lg:px-8">
         <div className="animate-fade-up">
+          <img
+            src={fachadaCarroAsset}
+            alt="Fachada e veículo da Assistência Familiar São João Batista"
+            className="mb-5 block aspect-[16/9] w-full max-w-xl rounded-xl object-cover object-[center_48%]"
+          />
           <span className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-white/70 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-dark">
             <Shield className="h-3.5 w-3.5" />
             Planos em destaque
@@ -454,13 +459,6 @@ function Hero() {
         {/* Couple visual */}
         <div className="relative animate-fade-up" style={{ animationDelay: "150ms" }}>
           <div className="relative mx-auto max-w-md lg:max-w-none">
-            <div className="absolute left-0 top-4 z-10 w-24 overflow-hidden rounded-2xl border border-white/90 bg-white p-1 shadow-[0_18px_45px_-22px_rgba(14,44,102,0.55)] sm:w-36 lg:-left-8 lg:top-10 lg:w-44">
-              <img
-                src={fachadaCarroAsset}
-                alt="Fachada e veículo da Assistência Familiar São João Batista"
-                className="aspect-[4/5] h-auto w-full rounded-xl object-cover object-center"
-              />
-            </div>
             <img
               src={coupleAsset}
               alt="Consultores da Assistência Familiar São João Batista"
