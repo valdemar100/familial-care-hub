@@ -129,11 +129,6 @@ const SALOES = [
         src: salaoVideo5,
         label: "Quinto vídeo do Salão 1",
       },
-      {
-        type: "image",
-        src: salaoFoto4,
-        alt: "Foto do Salão 1 da Assistência Familiar São João Batista",
-      },
     ],
   },
   {
@@ -153,6 +148,11 @@ const SALOES = [
         type: "image",
         src: salaoFoto3,
         alt: "Terceira foto do Salão 2 da Assistência Familiar São João Batista",
+      },
+      {
+        type: "image",
+        src: salaoFoto4,
+        alt: "Foto adicional do Salão 2 da Assistência Familiar São João Batista",
       },
       {
         type: "image",
