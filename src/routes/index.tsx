@@ -36,9 +36,12 @@ import yurySousaLogo from "@/assets/partners/yury-sousa-estetica.png";
 import salaoFoto1 from "@/assets/saloes/salao-foto-1.jpg";
 import salaoFoto2 from "@/assets/saloes/salao-foto-2.jpg";
 import salaoFoto3 from "@/assets/saloes/salao-foto-3.jpg";
+import salaoFoto4 from "@/assets/saloes/salao-foto-4.jpg";
 import salaoVideo1 from "@/assets/saloes/salao-video-1.mp4";
 import salaoVideo2 from "@/assets/saloes/salao-video-2.mp4";
 import salaoVideo3 from "@/assets/saloes/salao-video-3.mp4";
+import salaoVideo4 from "@/assets/saloes/salao-video-4.mp4";
+import salaoVideo5 from "@/assets/saloes/salao-video-5.mp4";
 
 const WHATSAPP_BASE = "https://wa.me/5585991141979";
 const wa = (msg: string) => `${WHATSAPP_BASE}?text=${encodeURIComponent(msg)}`;
@@ -106,6 +109,21 @@ const SALOES = [
         type: "video",
         src: salaoVideo3,
         label: "Terceiro vídeo do Salão 1",
+      },
+      {
+        type: "video",
+        src: salaoVideo4,
+        label: "Quarto vídeo do Salão 1",
+      },
+      {
+        type: "video",
+        src: salaoVideo5,
+        label: "Quinto vídeo do Salão 1",
+      },
+      {
+        type: "image",
+        src: salaoFoto4,
+        alt: "Foto do Salão 1 da Assistência Familiar São João Batista",
       },
     ],
   },
