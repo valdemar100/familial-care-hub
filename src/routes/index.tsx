@@ -27,6 +27,7 @@ import {
 
 import logoAsset from "@/assets/logo-sjb-transparent.png";
 import coupleAsset from "@/assets/couple-sjb-local.png";
+import fachadaCarroAsset from "@/assets/fachada-carro-sjb.jpg";
 import antonioLucasLogo from "@/assets/partners/antonio-lucas.png";
 import clinicaJessicaLogo from "@/assets/partners/clinica-jessica.png";
 import cnNutriLogo from "@/assets/partners/cn-nutri.png";
@@ -149,6 +150,30 @@ const SALOES = [
   },
 ] as const;
 
+const LOCACAO_MESSAGES = [
+  {
+    eyebrow: "Locação de espaços",
+    title:
+      "Disponibilizamos nosso espaço de velório para locação, mesmo que você não seja nosso cliente.",
+    text: "Um ambiente preparado para acolher familiares e amigos com respeito, cuidado e tranquilidade.",
+  },
+  {
+    eyebrow: "Aberto ao público",
+    title: "Você não precisa ter plano para solicitar nosso espaço.",
+    text: "Nossa equipe orienta sobre disponibilidade, estrutura e todos os detalhes da locação.",
+  },
+  {
+    eyebrow: "Estrutura própria",
+    title: "Salões organizados para momentos de despedida.",
+    text: "Espaços pensados para receber familiares e amigos com conforto, privacidade e acolhimento.",
+  },
+  {
+    eyebrow: "Atendimento humano",
+    title: "Entre em contato e saiba como reservar.",
+    text: "Tire suas dúvidas pelo WhatsApp e receba as informações para escolher o espaço adequado.",
+  },
+] as const;
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -186,6 +211,7 @@ function LandingPage() {
       <Header />
       <main>
         <Hero />
+        <LocacaoMensagens />
         <Planos />
         <Sobre />
         <Dependentes />
@@ -205,6 +231,7 @@ function LandingPage() {
 
 const NAV = [
   { href: "#inicio", label: "Início" },
+  { href: "#locacao", label: "Locação" },
   { href: "#planos", label: "Planos" },
   { href: "#saloes", label: "Salões" },
   { href: "#sobre", label: "Sobre" },
@@ -238,11 +265,11 @@ function Header() {
           <img
             src={logoAsset}
             alt="Assistência Familiar São João Batista"
-            className="h-16 w-auto sm:h-20 lg:h-24"
+            className="h-20 w-auto sm:h-24 lg:h-28"
           />
         </a>
 
-        <nav className="hidden items-center gap-1 lg:flex">
+        <nav className="hidden items-center gap-1 xl:flex">
           {NAV.map((item) => (
             <a
               key={item.href}
@@ -268,7 +295,7 @@ function Header() {
           </a>
           <button
             aria-label="Abrir menu"
-            className="inline-flex items-center justify-center rounded-md p-2 text-brand-dark lg:hidden"
+            className="inline-flex items-center justify-center rounded-md p-2 text-brand-dark xl:hidden"
             onClick={() => setOpen((v) => !v)}
           >
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -277,7 +304,7 @@ function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-border bg-white lg:hidden">
+        <div className="border-t border-border bg-white xl:hidden">
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-3">
             {NAV.map((item) => (
               <a
@@ -312,7 +339,7 @@ function Header() {
 
 function Hero() {
   return (
-    <section id="inicio" className="bg-hero relative overflow-hidden pt-36 pb-16 sm:pt-40 sm:pb-24">
+    <section id="inicio" className="bg-hero relative overflow-hidden pt-40 pb-16 sm:pt-44 sm:pb-24">
       {/* Decorative blobs */}
       <div className="pointer-events-none absolute -left-24 top-24 h-72 w-72 rounded-full bg-brand-light/50 blur-3xl animate-floaty" />
       <div
@@ -379,6 +406,13 @@ function Hero() {
         {/* Couple visual */}
         <div className="relative animate-fade-up" style={{ animationDelay: "150ms" }}>
           <div className="relative mx-auto max-w-md lg:max-w-none">
+            <div className="absolute left-0 top-4 z-10 w-24 overflow-hidden rounded-2xl border border-white/90 bg-white p-1 shadow-[0_18px_45px_-22px_rgba(14,44,102,0.55)] sm:w-36 lg:-left-8 lg:top-10 lg:w-44">
+              <img
+                src={fachadaCarroAsset}
+                alt="Fachada e veículo da Assistência Familiar São João Batista"
+                className="aspect-[4/5] h-auto w-full rounded-xl object-cover object-center"
+              />
+            </div>
             <img
               src={coupleAsset}
               alt="Consultores da Assistência Familiar São João Batista"
@@ -392,6 +426,81 @@ function Hero() {
               </div>
               <div className="text-2xl font-extrabold">R$ 39,90</div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- LOCAÇÃO ---------- */
+
+function LocacaoMensagens() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeMessage = LOCACAO_MESSAGES[activeIndex] ?? LOCACAO_MESSAGES[0];
+
+  const goToMessage = (offset: number) => {
+    setActiveIndex(
+      (current) => (current + offset + LOCACAO_MESSAGES.length) % LOCACAO_MESSAGES.length,
+    );
+  };
+
+  return (
+    <section id="locacao" className="bg-brand-dark py-12 text-white sm:py-14">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-8 px-4 sm:px-6 lg:grid-cols-[1fr_auto] lg:px-8">
+        <div className="min-h-[210px]">
+          <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-white/90">
+            <HomeIcon className="h-4 w-4" />
+            {activeMessage.eyebrow}
+          </span>
+          <h2 className="mt-5 max-w-4xl text-3xl font-bold leading-tight text-white sm:text-4xl">
+            {activeMessage.title}
+          </h2>
+          <p className="mt-4 max-w-3xl text-base leading-relaxed text-white/80 sm:text-lg">
+            {activeMessage.text}
+          </p>
+          <a
+            href={wa("Olá! Gostaria de saber mais sobre a locação do espaço de velório.")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-brand-dark shadow-sm transition hover:bg-brand-soft"
+          >
+            Saber sobre locação <MessageCircle className="h-4 w-4" />
+          </a>
+        </div>
+
+        <div className="flex items-center justify-between gap-5 lg:flex-col">
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              aria-label="Ver mensagem anterior"
+              onClick={() => goToMessage(-1)}
+              className="grid h-12 w-12 place-items-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white hover:text-brand-dark"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
+            <button
+              type="button"
+              aria-label="Ver próxima mensagem"
+              onClick={() => goToMessage(1)}
+              className="grid h-12 w-12 place-items-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white hover:text-brand-dark"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
+          </div>
+
+          <div className="flex items-center gap-2">
+            {LOCACAO_MESSAGES.map((message, index) => (
+              <button
+                key={message.title}
+                type="button"
+                aria-label={`Ver mensagem ${index + 1}`}
+                onClick={() => setActiveIndex(index)}
+                className={`h-2.5 rounded-full transition-all ${
+                  index === activeIndex ? "w-8 bg-white" : "w-2.5 bg-white/35 hover:bg-white/70"
+                }`}
+              />
+            ))}
           </div>
         </div>
       </div>
@@ -726,25 +835,6 @@ function Saloes() {
               </a>
             </article>
           ))}
-        </div>
-
-        <div className="mx-auto mt-8 max-w-3xl rounded-3xl border border-brand-dark/10 bg-brand-soft/70 p-6 text-center shadow-sm sm:p-8">
-          <h3 className="text-2xl font-bold text-brand-dark">
-            Seu ente querido merece um espaço adequado.
-          </h3>
-          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            Os salões de velório da Assistência Familiar São João Batista também estão disponíveis
-            para locação ao público em geral, mesmo sem vínculo com nossos planos.
-          </p>
-          <p className="mt-3 font-semibold text-brand-dark">Entre em contato e saiba mais.</p>
-          <a
-            href={wa("Olá! Gostaria de saber mais sobre a locação dos salões de velório.")}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-brand-dark px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand"
-          >
-            Falar sobre locação <MessageCircle className="h-4 w-4" />
-          </a>
         </div>
       </div>
     </section>
