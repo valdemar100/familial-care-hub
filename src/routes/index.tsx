@@ -34,10 +34,6 @@ import cnNutriLogo from "@/assets/partners/cn-nutri.png";
 import lceOpticaLogo from "@/assets/partners/lce-optica.png";
 import opticaParisLogo from "@/assets/partners/optica-paris.png";
 import yurySousaLogo from "@/assets/partners/yury-sousa-estetica.png";
-import salaoFoto1 from "@/assets/saloes/salao-foto-1.jpg";
-import salaoFoto2 from "@/assets/saloes/salao-foto-2.jpg";
-import salaoFoto3 from "@/assets/saloes/salao-foto-3.jpg";
-import salaoFoto4 from "@/assets/saloes/salao-foto-4.jpg";
 import salao2Foto4 from "@/assets/saloes/salao-2-foto-4.jpg";
 import salao2Foto5 from "@/assets/saloes/salao-2-foto-5.jpg";
 import salao2Foto6 from "@/assets/saloes/salao-2-foto-6.jpg";
@@ -46,9 +42,6 @@ import salao2Foto8 from "@/assets/saloes/salao-2-foto-8.jpg";
 import salao2Foto9 from "@/assets/saloes/salao-2-foto-9.jpg";
 import salao2Foto10 from "@/assets/saloes/salao-2-foto-10.jpg";
 import salao2Foto11 from "@/assets/saloes/salao-2-foto-11.jpg";
-import salaoVideo1 from "@/assets/saloes/salao-video-1.mp4";
-import salaoVideo2 from "@/assets/saloes/salao-video-2.mp4";
-import salaoVideo3 from "@/assets/saloes/salao-video-3.mp4";
 import salaoVideo4 from "@/assets/saloes/salao-video-4.mp4";
 import salaoVideo5 from "@/assets/saloes/salao-video-5.mp4";
 
@@ -106,54 +99,19 @@ const SALOES = [
     media: [
       {
         type: "video",
-        src: salaoVideo1,
+        src: salaoVideo4,
         label: "Vídeo do Salão 1",
       },
       {
         type: "video",
-        src: salaoVideo2,
-        label: "Segundo vídeo do Salão 1",
-      },
-      {
-        type: "video",
-        src: salaoVideo3,
-        label: "Terceiro vídeo do Salão 1",
-      },
-      {
-        type: "video",
-        src: salaoVideo4,
-        label: "Quarto vídeo do Salão 1",
-      },
-      {
-        type: "video",
         src: salaoVideo5,
-        label: "Quinto vídeo do Salão 1",
+        label: "Segundo vídeo do Salão 1",
       },
     ],
   },
   {
     title: "Salão 2",
     media: [
-      {
-        type: "image",
-        src: salaoFoto1,
-        alt: "Foto do Salão 2 da Assistência Familiar São João Batista",
-      },
-      {
-        type: "image",
-        src: salaoFoto2,
-        alt: "Outra foto do Salão 2 da Assistência Familiar São João Batista",
-      },
-      {
-        type: "image",
-        src: salaoFoto3,
-        alt: "Terceira foto do Salão 2 da Assistência Familiar São João Batista",
-      },
-      {
-        type: "image",
-        src: salaoFoto4,
-        alt: "Foto adicional do Salão 2 da Assistência Familiar São João Batista",
-      },
       {
         type: "image",
         src: salao2Foto4,
