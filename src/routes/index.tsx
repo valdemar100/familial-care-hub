@@ -774,15 +774,21 @@ function Servicos() {
 
         <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
           {SERVICES.map(({ icon: Icon, label }) => (
-            <div
+            <a
               key={label}
-              className="flex items-start gap-3 rounded-2xl border border-border bg-white p-4 shadow-sm transition-transform hover:-translate-y-0.5"
+              href={wa(
+                `Olá! Gostaria de saber mais sobre o serviço de ${label}: disponibilidade, valores e condições.`,
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Consultar ${label} pelo WhatsApp`}
+              className="flex cursor-pointer items-start gap-3 rounded-2xl border border-border bg-white p-4 shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand/40 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
             >
               <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-soft text-brand-dark">
                 <Icon className="h-5 w-5" />
               </div>
               <div className="text-sm font-medium text-brand-dark">{label}</div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
